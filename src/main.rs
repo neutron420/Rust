@@ -260,21 +260,67 @@
 //     print!("User 1 username: {:?}", user1.active);
 // }
 
-struct Rect {
-   width: u32,
-   height: u32,
+// struct Rect {
+//    width: u32,
+//    height: u32,
+// }
+
+// impl Rect {
+//     fn area(&self) -> u32 {
+//          self.width * self.height
+//     }
+// }
+
+// fn main() {
+//     let rect = Rect {
+//         width: 30,
+//         height: 50,
+//     };
+//     print!("The area of the rectangle is {}", rect.area());
+// }
+
+// enum Direction {
+//     North,
+//     East,
+//     South,
+//     West,
+// }
+
+// fn main() {
+//     let my_direction = Direction::North;
+//     let new_direction = my_direction; // No error, because Direction is Copy
+//     move_around(new_direction);
+// }
+
+// fn move_around(direction: Direction) {
+//     // implements logic to move a character around
+// }
+
+
+enum Shape {
+    Circle(f64),  // Variant with associated data (radius)
+    Square(f64),  // Variant with associated data (side length)
+    Rectangle(f64, f64),  // Variant with associated data (width, height)
 }
 
-impl Rect {
-    fn area(&self) -> u32 {
-         self.width * self.height
+// Function to calculate area based on the shape
+fn calculate_area(shape: Shape) -> f64 {
+    match shape {
+        Shape::Circle(radius) => std::f64::consts::PI * radius * radius,
+        Shape::Square(side_length) => side_length * side_length,
+        Shape::Rectangle(width, height) => width * height,
     }
 }
 
 fn main() {
-    let rect = Rect {
-        width: 30,
-        height: 50,
-    };
-    print!("The area of the rectangle is {}", rect.area());
+    // Create instances of different shapes
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(4.0);
+    let rectangle = Shape::Rectangle(3.0, 6.0);
+
+    // Calculate and print the areas
+    println!("Area of circle: {}", calculate_area(circle));
+    println!("Area of square: {}", calculate_area(square));
+    println!("Area of rectangle: {}", calculate_area(rectangle));
 }
+
